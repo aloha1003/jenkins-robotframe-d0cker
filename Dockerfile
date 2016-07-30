@@ -7,8 +7,7 @@ ENV INITRD No
 
 
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y openjdk-8-jre-headless && \
-    apt-get clean 
+    apt-get install --no-install-recommends -y openjdk-8-jre-headless 
 # Install Jenkins
 
 RUN apt-get update && apt-get install -y git curl zip 
