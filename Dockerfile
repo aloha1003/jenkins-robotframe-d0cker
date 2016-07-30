@@ -1,12 +1,5 @@
 FROM aloha1003/jenkins-docker
 MAINTAINER John Lin <knives1003@gmail.com>
-COPY install_jenkins_plugin_with_dependency.sh /usr/local/bin/install_jenkins_plugin_with_dependency.sh
-COPY custom.groovy /usr/share/jenkins/ref/init.groovy.d/custom.groovy
-#COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
-USER root
-#RUN  /usr/local/bin/install_jenkins_plugin_with_dependency.sh /usr/share/jenkins/ref/plugins.txt
-
-
 # Install Robot FrameWork
 
 RUN apt-get update
@@ -49,24 +42,3 @@ RUN mkdir /testing
 
 ENV DISPLAY=:1.0
 ENV ROBOT_TESTS=/testing/
-#WORKDIR /robot
-#COPY ./testing /testing
-#COPY entry_point.sh /robot/entry_point.sh
-
-
-
-
-# Create Jenkins User
-#RUN useradd jenkins -m -s /bin/bash
-
-# Add public key for Jenkins login
-#RUN mkdir /home/jenkins/.ssh
-#COPY /files/authorized_keys /home/jenkins/.ssh/authorized_keys
-#RUN chown -R jenkins /home/jenkins
-#RUN chgrp -R jenkins /home/jenkins
-#RUN chmod 600 /home/jenkins/.ssh/authorized_keys
-#RUN chmod 700 /home/jenkins/.ssh
-
-# Add the jenkins user to sudoers
-#RUN echo "jenkins  ALL=(ALL)  ALL" >> etc/sudoers
-
