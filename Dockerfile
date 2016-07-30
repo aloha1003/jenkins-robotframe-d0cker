@@ -10,7 +10,7 @@ USER root
 # Install Robot FrameWork
 
 RUN apt-get update
-RUN apt-get install -y curl unzip libssl-dev python-pip python-dev gcc   libnss3-dev 
+RUN apt-get install -y curl unzip libssl-dev python-pip python-dev gcc   libnss3-dev  phantomjs
 #
 #Install Google chromium
 RUN apt-get install -y 
@@ -27,7 +27,10 @@ RUN mv -f ./chromedriver /usr/local/share/chromedriver
 #  Change the directory to /usr/bin/chromedriver
 RUN ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 RUN ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
-RUN pip install --upgrade setuptools
+
+
+
+#RUN pip install --upgrade setuptools
 RUN pip install --upgrade pip
 RUN pip install robotframework 
 RUN pip install pycrypto
