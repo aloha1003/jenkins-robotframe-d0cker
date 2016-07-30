@@ -1,4 +1,4 @@
-FROM jenkins:2.7.1
+FROM aloha1003/jenkins-docker
 MAINTAINER John Lin <knives1003@gmail.com>
 COPY install_jenkins_plugin_with_dependency.sh /usr/local/bin/install_jenkins_plugin_with_dependency.sh
 COPY custom.groovy /usr/share/jenkins/ref/init.groovy.d/custom.groovy
