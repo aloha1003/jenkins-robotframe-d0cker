@@ -27,9 +27,7 @@ RUN pip install pycrypto
 RUN pip install robotframework-sshlibrary 
 RUN pip install robotframework-selenium2library
 
-#Init Xvfb -- 這裡是雷
-#RUN export DISPLAY=:1.0
-#RUN Xvfb :1 -screen 0 1024x768x16 &> xvfb.log
+
 
 #Install Chinese font
 RUN apt-get install fonts-wqy-zenhei
@@ -114,9 +112,13 @@ USER ${user}
 COPY jenkins.sh /usr/local/bin/jenkins.sh
 ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
 
-# from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
-COPY plugins.sh /usr/local/bin/plugins.sh
-COPY install-plugins.sh /usr/local/bin/install-plugins.sh 
+
+
+
+COPY install_jenkins_plugin_with_dependency.sh /usr/local/bin/install_jenkins_plugin_with_dependency.sh
+COPY custom.groovy /usr/share/jenkins/ref/init.groovy.d/custom.groovy
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+
 
 
 
